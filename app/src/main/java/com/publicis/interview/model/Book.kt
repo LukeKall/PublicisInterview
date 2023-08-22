@@ -1,12 +1,16 @@
 package com.publicis.interview.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Book(
-    val isbn: ISBN,
+    val id: String,
     val title: String,
     val price: Int,
+    val type: String,
     val coverUrl: String,
     val synopsis: List<String>
 ) {
-    @JvmInline
-    value class ISBN(val value: String)
+
+    var priceDisplay = String.format("%.2f€", price.toDouble() / 100)
 }
